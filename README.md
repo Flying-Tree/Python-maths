@@ -16,4 +16,4 @@ Encodes and decodes a string using Huffman coding ([Wikipedia](https://en.wikipe
 
 Both the source and the destination must use the same tree, hence either they use a predefined tree either the tree is transmitted.
 
-You can use a predefined tree in the ```*args``` (```huffman_encode(message,tree)```) using a format similar to the tree in the output. This is better for short messages with few different symbols, but you lose the adaptability of this encoding method, especially if the message contains many unusual symbols. Therefore it is better to use the automatically generated tree for long strings with many symbols.
+You can use a predefined tree with ```huffman_encode(message,tree)``` using a format similar to the tree in the output. This is better for short messages with few different symbols, but you lose the adaptability of this encoding method, especially if the message contains many unusual symbols. Therefore it is better to use the automatically generated tree for long strings with many symbols.
