@@ -25,21 +25,26 @@ def tree_2_code(tree,bin_code):
             k+=tree_2_code(x,bin_code+str(i))
     return k
 
-def huffman_encode(message):
-    tree=[]
+def huffman_encode(message,*args):
+    # the *args allows a predefined tree as a list in a format similar to the one in the output of this function.
     
-    # Count
-    for letter in message:
-        if not letter in [x[0] for x in tree]:
-            tree.append([letter,message.count(letter)])
-    
-    # Make tree
-    while len(tree)>1:
-        tree.sort(key=lambda x:x[1])
-        tree.insert(0,[[tree[0][0],tree[1][0]],tree[0][1]+tree[1][1]])
-        tree.pop(1)
-        tree.pop(1)
-    tree=tree[0][0]
+    if len(args)==0:
+        tree=[]
+        
+        # Count
+        for letter in message:
+            if not letter in [x[0] for x in tree]:
+                tree.append([letter,message.count(letter)])
+        
+        # Make tree
+        while len(tree)>1:
+            tree.sort(key=lambda x:x[1])
+            tree.insert(0,[[tree[0][0],tree[1][0]],tree[0][1]+tree[1][1]])
+            tree.pop(1)
+            tree.pop(1)
+        tree=tree[0][0]
+    else:
+        tree=args[0]
     
     # Make code
     code_list=tree_2_code(tree,'')
@@ -49,9 +54,6 @@ def huffman_encode(message):
     coded=""
     for letter in message:
         coded+=code_dic[letter]
-    
-    print(len(coded)/len(message))
-    print(log(len(code_list),2))
     
     return coded,tree
 
