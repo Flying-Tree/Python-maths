@@ -1,6 +1,6 @@
 # Python-maths
 
-Python scripts for maths
+Python scripts for maths or related fields (information theory for now).
 
 ## [factorisation_polynome_tk.py](https://github.com/Flying-Tree/Python-maths/blob/main/factorisation_polynomes_tk.py)
 
@@ -8,7 +8,7 @@ Polynomial factorization in the set of rational numbers, with a Tkinter GUI. If 
 
 ## [str-encoding.py](https://github.com/Flying-Tree/Python-maths/blob/main/str-encoding.py)
 
-Different methods to encode and decode strings into binary sequences.
+Different methods to encode and decode strings into binary sequences. It is a completely theorical script so more 
 
 ### Huffman coding
 
