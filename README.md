@@ -24,6 +24,6 @@ You can use a predefined tree and this is better for short messages with few dif
 
 * A ```huffman``` contains the original message, the encoded message, and the tree. You can set some the using ```var = huffman( message = ' ... ' , coded = ' ... ' , tree = [ ... ] )```, or just ```var.message = ' ... '``` (etc).
 
-* ```encode``` method can be called to update the value of ```coded``` and ```tree```. Concerning ```tree```, the scripts tries to use the current value of ```tree``` but if a character is not in the tree, a new one is created with the current ```message```, without considering the former ```tree```. Moreover, nothing in the output says wether the tree changed.
+* ```encode``` method can be called to update the value of ```coded``` and ```tree```. Concerning ```tree```, the scripts tries to use the current value of ```tree``` but if a character is not in the tree, a new one is created with the current ```message```, without considering the former ```tree```. Moreover, nothing in the output says if the tree changed.
 
-* ```decode``` set the value of ```message``` to the message associated with ```tree``` and ```coded```.
+* ```decode``` method sets the value of ```message``` to the message associated with ```tree``` and ```coded```. It doesn't detect if ```tree``` and ```coded``` are matching (there may be useless digits at the end of ```coded```).
