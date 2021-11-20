@@ -22,7 +22,7 @@ You can use a predefined tree and this is better for short messages with few dif
 
 #### Documentation
 
-* A ```huffman``` contains the original message, the encoded message, and the tree. You can set some the using ```var = huffman( message = ' ... ' )```, or just ```var.message = ' ... '``` (and it works with ```tree``` or ```coded``` instead of ```message```).
+* A ```huffman``` contains the original message, the encoded message, and the tree. You can set some these variables using ```var = huffman( message = ' ... ' )``` at creation, or later ```var.message = ' ... '``` (both work with ```tree``` or ```coded``` instead of ```message```).
 
 * ```encode``` method can be called to update the value of ```coded``` and ```tree```. Concerning ```tree```, the scripts tries to use the current value of ```tree``` but if a character is not in the tree, a new one is created with the current ```message```, without considering the former ```tree```. Moreover, nothing in the output says if the tree changed.
 
