@@ -33,6 +33,7 @@ def init():
     N=tk.StringVar()
     Degre=tk.Entry(root,textvar=N,width=10,bg=bg_color)
     Degre.bind('<Return>',updateEntries)
+    Degre.bind('<KP_Enter>',updateEntries)
     
     Degre_label.grid(row=0,column=0)
     Degre.grid(row=0,column=1)
@@ -61,6 +62,8 @@ def updateEntries(event):
                         CoefEntries.append((tk.Entry(root,width=10,bg=bg_color,textvar=polynome_StrVar[i][0]),tk.Entry(root,width=10,bg=bg_color,textvar=polynome_StrVar[i][1])))
                         CoefEntries[-1][0].bind('<Return>',updatePolynome)
                         CoefEntries[-1][1].bind('<Return>',updatePolynome)
+                        CoefEntries[-1][0].bind('<KP_Enter>',updatePolynome)
+                        CoefEntries[-1][1].bind('<KP_Enter>',updatePolynome)
                 
                 else:
                     for i in range(k+1,len(CoefEntries)):
@@ -379,6 +382,17 @@ def racines_multiples(Pstr):
                 out+='\left('+x+'^{'+str(Plist.count(x))+'}'
             else:
                 out+='\left('+x
+    
+    # Specific case of 'x' factors, which are all together because 0 is the first tested value in racines_evidentes.
+    
+    out=out.replace('^{}','')
+    
+    c=1
+    while 'x'*c in out:
+        c+=1
+    if c>2:
+        out=out.replace('x'*(c-1),'x^{'+str(c-1)+'}')
+    
     return out
 
 def affichage(Pfact):
@@ -399,14 +413,14 @@ def affichage(Pfact):
         
         image = FigureCanvasTkAgg(fig, master=root)
     
-    tmptxt1='P(x)='+affichage_polynome(polynome)[6:-7]    # forme développée
+    tmptxt1='P(x)='+affichage_polynome(polynome).replace('\left(','').replace('\\right)','')    # forme développée
     
     tmptxt2='='
     
     ### tmptxt2 soit la factorisation ultime
     
     if Pfact==[polynome]:                               # Au cas où aucune racine n'est trouvée
-        tmptxt2='='+affichage_polynome(polynome)[6:-7]
+        tmptxt2='='+affichage_polynome(polynome).replace('\left(','').replace('\\right)','')
         
     else:
         if abs(coef_dom[1])==1 and abs(coef_dom[0])!=1:                             # coefficient dominant entier différent de ±1
